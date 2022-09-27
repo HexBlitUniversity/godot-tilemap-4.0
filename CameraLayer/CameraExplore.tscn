@@ -1,0 +1,109 @@
+[gd_scene load_steps=3 format=3 uid="uid://buan0epysjqcy"]
+
+[ext_resource type="SpriteFrames" uid="uid://crub1xuj5r0hr" path="res://assets/arrow_animation.tres" id="1_qg2mf"]
+
+[sub_resource type="GDScript" id="GDScript_v33vg"]
+script/source = "extends Camera2D
+
+@onready var downArrow: AnimatedSprite2D = $DownArrow
+@onready var upArrow: AnimatedSprite2D = $UpArrow
+@onready var leftArrow: AnimatedSprite2D = $LeftArrow
+@onready var rightArrow: AnimatedSprite2D = $RightArrow
+
+var cameraSpeed = 450
+
+
+func _ready():
+	pass # Replace with function body.
+
+
+func _physics_process(delta):
+
+	if Input.is_action_just_pressed(\"Up\"):
+		upArrow.frame = 0
+		upArrow.visible = true
+		upArrow.playing = true
+		
+	if Input.is_action_just_pressed(\"Down\"):
+		downArrow.frame = 0
+		downArrow.visible = true
+		downArrow.playing = true
+		
+	if Input.is_action_just_pressed(\"Left\"):
+		leftArrow.frame = 0
+		leftArrow.visible = true
+		leftArrow.playing = true
+	
+	if Input.is_action_just_pressed(\"Right\"):
+		rightArrow.frame = 0
+		rightArrow.visible = true
+		rightArrow.playing = true
+	
+	if Input.is_action_pressed(\"Up\"):
+		self.translate(Vector2(0,-cameraSpeed*delta))
+	
+	if Input.is_action_pressed(\"Down\"):
+		self.translate(Vector2(0,cameraSpeed*delta))
+	
+	if Input.is_action_pressed(\"Left\"):
+		self.translate(Vector2(-cameraSpeed*delta,0))
+	
+	if Input.is_action_pressed(\"Right\"):
+		self.translate(Vector2(cameraSpeed*delta,0))
+		
+		
+		
+	if Input.is_action_just_released(\"Up\"):
+		upArrow.visible = false
+		upArrow.frame = 0
+	if Input.is_action_just_released(\"Down\"):
+		downArrow.visible = false
+		downArrow.frame = 0
+	if Input.is_action_just_released(\"Left\"):
+		leftArrow.visible = false
+		leftArrow.frame = 0
+	
+	if Input.is_action_just_released(\"Right\"):
+		rightArrow.visible = false
+		rightArrow.frame = 0
+
+
+"
+
+[node name="CameraExplore" type="Camera2D"]
+current = true
+script = SubResource("GDScript_v33vg")
+
+[node name="DownArrow" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 490)
+frames = ExtResource("1_qg2mf")
+animation = &"UpArrow"
+flip_v = true
+
+[node name="UpArrow" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -490)
+frames = ExtResource("1_qg2mf")
+animation = &"UpArrow"
+
+[node name="RightArrow" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(911, 0)
+frames = ExtResource("1_qg2mf")
+animation = &"RightArrow"
+
+[node name="LeftArrow" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-911, 0)
+frames = ExtResource("1_qg2mf")
+animation = &"RightArrow"
+flip_h = true

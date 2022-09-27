@@ -1,11 +1,11 @@
-extends Node2D
+extends Camera2D
 
-@onready var downArrow: AnimatedSprite2D = $Camera2d/DownArrow
-@onready var upArrow: AnimatedSprite2D = $Camera2d/UpArrow
-@onready var leftArrow: AnimatedSprite2D = $Camera2d/LeftArrow
-@onready var rightArrow: AnimatedSprite2D = $Camera2d/RightArrow
-@onready var camera: Camera2D = $Camera2d
+@onready var downArrow: AnimatedSprite2D = $DownArrow
+@onready var upArrow: AnimatedSprite2D = $UpArrow
+@onready var leftArrow: AnimatedSprite2D = $LeftArrow
+@onready var rightArrow: AnimatedSprite2D = $RightArrow
 
+var cameraSpeed = 250
 
 
 func _ready():
@@ -18,6 +18,7 @@ func _physics_process(delta):
 		upArrow.frame = 0
 		upArrow.visible = true
 		upArrow.playing = true
+		
 	elif Input.is_action_just_pressed("Down"):
 		downArrow.frame = 0
 		downArrow.visible = true
@@ -30,6 +31,17 @@ func _physics_process(delta):
 		rightArrow.frame = 0
 		rightArrow.visible = true
 		rightArrow.playing = true
+	
+	if Input.is_action_pressed("Up"):
+		self.translate(Vector2(0,-cameraSpeed*delta))
+	elif Input.is_action_pressed("Down"):
+		self.translate(Vector2(0,cameraSpeed*delta))
+	elif Input.is_action_pressed("Left"):
+		self.translate(Vector2(-cameraSpeed*delta,0))
+	elif Input.is_action_pressed("Right"):
+		self.translate(Vector2(-cameraSpeed*delta,0))
+		
+		
 		
 	if Input.is_action_just_released("Up"):
 		upArrow.visible = false
