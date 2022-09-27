@@ -1,0 +1,40 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://crub1xuj5r0hr"]
+
+[ext_resource type="Texture2D" uid="uid://dp6rou74pbutn" path="res://assets/arrow-sheet.png" id="1_0k3no"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xq2bn"]
+atlas = ExtResource("1_0k3no")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5eyi1"]
+atlas = ExtResource("1_0k3no")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4gei"]
+atlas = ExtResource("1_0k3no")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4r4f"]
+atlas = ExtResource("1_0k3no")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhdeo"]
+atlas = ExtResource("1_0k3no")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2biu"]
+atlas = ExtResource("1_0k3no")
+region = Rect2(192, 96, 96, 96)
+
+[resource]
+animations = [{
+"frames": [SubResource("AtlasTexture_xq2bn"), SubResource("AtlasTexture_5eyi1"), SubResource("AtlasTexture_j4gei")],
+"loop": false,
+"name": &"RightArrow",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_v4r4f"), SubResource("AtlasTexture_dhdeo"), SubResource("AtlasTexture_m2biu")],
+"loop": false,
+"name": &"UpArrow",
+"speed": 3.0
+}]

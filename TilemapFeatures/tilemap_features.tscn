@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://3ajnfuxouth5"]
+
+[ext_resource type="SpriteFrames" uid="uid://crub1xuj5r0hr" path="res://assets/arrow_animation.tres" id="1_2mxma"]
+[ext_resource type="Script" path="res://TilemapFeatures/tilemap_features.gd" id="1_8msux"]
+
+[node name="TilemapFeatures" type="Node2D"]
+script = ExtResource("1_8msux")
+
+[node name="Camera2d" type="Camera2D" parent="."]
+current = true
+
+[node name="DownArrow" type="AnimatedSprite2D" parent="Camera2d"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, 490)
+frames = ExtResource("1_2mxma")
+animation = &"UpArrow"
+flip_v = true
+
+[node name="UpArrow" type="AnimatedSprite2D" parent="Camera2d"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -490)
+frames = ExtResource("1_2mxma")
+animation = &"UpArrow"
+
+[node name="RightArrow" type="AnimatedSprite2D" parent="Camera2d"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(911, 0)
+frames = ExtResource("1_2mxma")
+animation = &"RightArrow"
+
+[node name="LeftArrow" type="AnimatedSprite2D" parent="Camera2d"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-911, 0)
+frames = ExtResource("1_2mxma")
+animation = &"RightArrow"
+flip_h = true
